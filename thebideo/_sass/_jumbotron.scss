@@ -1,0 +1,58 @@
+.jumbotron {
+    background-color: $colorLightPurple;
+    margin-top: $navMaxHeight;
+
+    div {
+        text-align: center;
+        .episode-panel {
+            @include transform(50%);
+            border-radius: 1rem;
+            width: 90%;
+            max-height: 90%;
+        }
+    }
+    .jumbotron-info {
+        display: block;
+        color: aliceblue;
+        font-family: Arial, Helvetica, sans-serif;
+        padding: 1rem;
+        @include transform(50%);
+    }
+    #mainsound {
+        border-radius: 2rem;
+        margin-top: 2rem;
+        vertical-align: bottom;
+        max-width: 100%;
+    }
+    .twitter {
+        max-height: 100%;
+        max-width: 100%;
+        iframe {
+            background-color: white;
+        }
+    }
+}
+
+@media screen and (min-width: $smScreen) {
+    .jumbotron {
+        .twitter {
+            display: block;
+        }
+    }
+}
+
+@media screen and (min-width: $mdScreen) {
+    .jumbotron {
+        .twitter {
+            display: block;
+        }
+    }
+}
+
+@media screen and (max-width: $mdScreen) {
+    .jumbotron {
+        .twitter {
+            display: none;
+        }
+    }
+}

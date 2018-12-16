@@ -1,0 +1,33 @@
+@import 'globals';
+
+.form-container {
+    width: 40%;
+    border: 1px solid black;
+    margin: 2rem;
+}
+
+a, h1 {
+    text-align: center;
+    color: $colorDeepPurple;
+    margin: 2rem;
+}
+
+form {
+    margin: 2rem;
+    input {
+        width: 90%;
+        height: 2rem;
+        margin: 1rem;
+    }
+}
+
+#text-box {
+}
+
+.g-recaptcha {
+    margin: 1rem;
+}
+
+#submit {
+    padding: 1rem;
+}

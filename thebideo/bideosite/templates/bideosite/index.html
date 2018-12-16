@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+{% load static %}
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>The Bideo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="{% static 'bideosite/main.css' %}" />
+    <link rel="shortcut icon" href="{% static 'bideosite/favicon.ico' %}">
+    <script src="{% static 'bideosite/main.js' %}"></script>
+    <script async src="https://platform.twitter.com/widgets.js"></script>
+</head>
+
+<header class="row">
+    <div id="navbar" class="navbar col-xs-12 col-sm-12">
+        <a class="logo" href="index.html">
+            <img src="{% static 'bideosite/bideo-logo.png' %}" alt="The Bideo" />
+        </a>
+        <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+            <img src="{% static 'bideosite/hamburger-1.png' %}" alt="Menu" />
+        </a>
+        <a href="https://bideo.podbean.com/"><p>Podcast</p></a>
+        <a href="#reviews"><p>Reviews</p></a>
+        <a href="#library"><p>Library</p></a>
+        <a href="contact"><p>Contact Us!</p></a>
+    </div>
+</header>
+{% for pod in podcast %}
+<div class="jumbotron row">
+    <div class="col-xs-12 col-sm-4 col-md-4">
+        <img class="episode-panel" src="{{ pod.img_url }}" alt="Them Bideo Boys" />
+    </div>
+    <div class="col-xs-12 col-sm-8 col-md-4">
+        <div class="jumbotron-info">
+            <h4>{{ pod.pub_date }}</h4>
+            <h1>{{ pod.episode_title }}</h1>
+            <p>{{ pod.episode_desc }}</p>
+            <audio id="mainsound" controls>
+                <source src="{{ pod.file_url }}" type="audio/mp3">
+                Your browser does not support the <code>audio</code> element.
+            </audio>
+        </div>
+    </div>
+    <div class="twitter col-md-4">
+        <a class="twitter-timeline" data-height="100%" data-chrome="noheader nofooter transparent"
+        href="https://twitter.com/TheBideo">
+            Tweets by @TheBideo
+        </a>
+    </div>
+</div>
+{% endfor %}
+{% for tube in youtubes %}
+<body>
+    <div class="row reviews">
+        <div class="content col-xs-12 col-sm-12 col-md-6 col-lg-6">
+            <h3>{{ tube.video_title }}</h3>
+            <div class="video-container">
+                <iframe id="youtube" src="{{ tube.video_url }}" width="560" height="315"
+                    frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+            </div>
+        </div>
+        <div class="content col-xs-12 col-sm-12 col-md-6 col-lg-6">
+            <h3>Let's Read Latin!</h3>
+            <p>&emsp;&emsp;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
+                gravida sed tellus sed finibus. Aenean a augue at elit dapibus
+                pretium. Praesent eu vestibulum nisl. Aliquam sagittis
+                dignissim magna, in vestibulum orci maximus sit amet. Donec eu
+                ex ac nisl gravida venenatis nec et sem. Ut tincidunt cursus
+                porttitor. Cras pharetra fringilla urna vitae congue. Nullam
+                pharetra et felis quis malesuada. Curabitur volutpat lorem vel
+                dignissim ultrices. Nullam sit amet nunc pulvinar, dictum lorem
+                vitae, varius lorem. Nulla facilisi.</p>
+            <p>&emsp;&emsp;Vivamus condimentum, ipsum non tincidunt mollis, odio ante mattis
+                elit, at malesuada odio nulla eget metus. Vivamus sed massa
+                nulla. Ut vel leo erat. Praesent tincidunt augue lacus. Integer
+                pharetra sollicitudin dolor, eu ultrices magna ultricies non.
+                Quisque pulvinar cursus tristique. Maecenas ante ante,
+                ullamcorper eu cursus a, ornare eget diam.</p>
+        </div>
+    </div>
+</body>
+{% endfor %}
+<footer class="row col-lg-12">
+    <p>Brought to you by some sick nerdz!</p>
+</footer>
+
+</html>

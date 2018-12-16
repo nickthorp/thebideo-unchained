@@ -1,0 +1,94 @@
+#navbar {
+    background-color: whitesmoke;
+    position: fixed;
+    width: 100%;
+    z-index: 1;
+    .logo {
+        display: block;
+        float: left;
+        width: 20%;
+        padding: 0.25rem;
+        object-fit: contain;
+        -o-object-fit: contain;
+        img {
+            @include transform(50%);
+            max-height: $navMaxHeight - 1rem;
+            max-width: 100%;
+        }
+    }
+    a {
+        height: $navMaxHeight;
+    }
+    a:not(:first-child) {
+        display: block;
+        float: left;
+        width: 20%;
+        color: black;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 1rem;
+        text-align: center;
+        p {
+            @include transform(50%);
+        }
+    }
+    a:hover:not(:nth-last-child(n+5)) {
+        background-color: $colorLightPurple;
+        color: white;
+    }
+    .icon {
+        display: none;
+        position: relative;
+        img {
+            @include transform(50%);
+            max-height: $navMaxHeight - 1rem;
+            object-fit: contain;
+            -o-object-fit: contain;
+        }
+    }
+}
+
+@media screen and (min-width: $smScreen) {
+    #navbar {
+        a.icon {
+            display: none;
+        }
+    }
+}
+
+/* The "responsive" class is added to the topnav with JavaScript when the user clicks on the icon. This class makes the topnav look good on small screens (display the links vertically instead of horizontally) */
+@media screen and (max-width: $smScreen) {
+    #navbar {
+        overflow: visible;
+        a:not(:first-child) {
+            display: none;
+        }
+        a.icon {
+            display: block;
+            float: right;
+            text-align: right;
+        }
+    }
+    #navbar.responsive {
+        position: fixed;
+        z-index: 9999;
+    }
+    #navbar.responsive a:not(:nth-last-child(n+5)) {
+        float: right;
+        display: block;
+        width: 100%;
+        z-index: 9999;
+        text-align: right;
+        padding-right: 1rem;
+    }
+    #navbar.responsive a.icon {
+        display: block;
+        float: right;
+        width: 80%;
+    }
+    #navbar.responsive a.logo {
+        float: left;
+        img {
+            z-index: 99999;
+        }
+    }
+}

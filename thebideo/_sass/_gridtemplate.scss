@@ -1,0 +1,32 @@
+.row {
+    display: grid;
+    grid-template-columns: repeat($numColumns, 5fr);
+    grid-gap: 0;
+}
+
+.show-grid [class^=col-]{
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-color: #eee;
+    background-color: rgba(86,61,124,.15);
+    border: 1px solid #ddd;
+    border: 1px solid rgba(86,61,124,.2);
+}
+
+[class^=col-]{
+    grid-column-end: span $numColumns; //Full width fallback when no column size is define for the screen size.
+}
+
+// NESTED LOOP
+// Check out the compiled css. It is very repetitive, similar to Bootstrap Grid code
+// Loop through responsive breakpoints
+@each $size, $abbr in ($xsScreen,xs),($smScreen,sm),($mdScreen,md),($lgScreen,lg),($xlScreen,xl){
+    @media (min-width: $size){
+      // Loop through col classes
+      @for $i from 1 through $numColumns{
+        .col-#{$abbr}-#{$i}{
+          grid-column-end: span $i;
+        }
+      }
+    }
+  }

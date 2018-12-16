@@ -1,0 +1,4 @@
+requests
+PyYAML
+django
+psycopg2-binary

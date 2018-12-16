@@ -1,0 +1,17 @@
+**/__pycache__
+**/.idea
+**/_sass
+**/docker
+**/venv
+**/build
+**/.git
+**/.vscode
+
+**/.dockerignore
+**/.gitignore
+**/Jenkinsfile
+**/README.md
+**/LICENSE
+**/Dockerfile
+**/db.sqlite3
+#**/settings.py

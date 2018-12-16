@@ -1,0 +1,31 @@
+$numColumns: 12;
+$gutterWidth: 0.5rem;
+$navMaxHeight: 4.5rem;
+
+$xsScreen: 0px;
+$smScreen: 600px;
+$mdScreen: 768px;
+$lgScreen: 992px;
+$xlScreen: 1200px;
+
+$colorDeepPurple: rgb(107, 1, 107);
+$colorLightPurple: #B0779C;
+
+@mixin transform($percent) {
+    position: relative;
+    top: $percent;
+    -webkit-transform: translateY(-$percent);
+    -ms-transform: translateY(-$percent);
+    transform: translateY(-$percent);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    background-color: whitesmoke;
+    overflow: scroll;
+}
