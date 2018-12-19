@@ -1,9 +1,11 @@
 pipeline {
-    agent { dockerfile { dir '.' } }
+    agent {
+        node { any }
+    }
     stages {
         stage('build') {
             steps {
-                sh 'nmap -p5432 10.10.0.5'
+                sh 'echo Hello!'
             }
         }
     }
