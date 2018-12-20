@@ -1,0 +1,13 @@
+---
+recaptcha::secret: ''
+recaptcha::url: 'https://www.google.com/recaptcha/api/siteverify'
+
+email::to: ''
+thebideo::url: 'https://thebideo.com'
+## to test locally
+# thebideo::url: 'http://127.0.0.1'
+
+mailgun::from: 'comment@thebideo.com'
+mailgun::user: 'api'
+mailgun::secret: ''
+mailgun::url: 'https://api.mailgun.net/v3/mg.thebideo.com/messages'
