@@ -10,11 +10,16 @@ pipeline {
             steps {
                 sh 'chmod 755 build/*.sh'
                 sh 'build/convert.sh'
-                // package django container
-                // run tests
-                // deploy container
+                
             }
         }
+        stage('Package') {
+            steps {
+                sh 'build/thebideo-docker.sh'
+            }
+        }
+        // run tests
+        // deploy container
     }
     post {
         always { 
