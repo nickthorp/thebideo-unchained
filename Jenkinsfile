@@ -1,9 +1,16 @@
 pipeline {
     agent any
     stages {
-        stage('build') {
+        stage('Checkout') {
+            checkout scm
+        }
+        stage('Convert') {
             steps {
-                sh 'echo Hello!'
+                // convert sass files
+                // package django container
+                // run tests
+                // deploy container
+                // 
             }
         }
     }
