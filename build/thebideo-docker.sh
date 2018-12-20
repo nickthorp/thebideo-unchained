@@ -8,9 +8,8 @@ docker rm thebideo
 docker image rm thebideo:latest
 
 # Build that container
-docker build --rm -t thebideo:latest -f `pwd`/thebideo/docker/thebideo/Dockerfile .
+docker build --rm -t thebideo:latest -t thebideo:1.${BUILD_NUMBER} -f `pwd`/thebideo/docker/thebideo/Dockerfile .
 
-echo $BUILD_NUMBER
 # Run the container, should not be part of the build steps
 # docker run -d -p 127.0.0.1:19000:9000 -p 127.0.0.1:19191:9191 --name thebideo -it thebideo:latest
 # Run the DB migrate command, also should not be run during build time
