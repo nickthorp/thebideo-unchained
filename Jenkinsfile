@@ -8,7 +8,7 @@ pipeline {
         }
         stage('Convert') {
             steps {
-                sh './build/convert.sh'
+                sh 'build/convert.sh'
                 // package django container
                 // run tests
                 // deploy container
