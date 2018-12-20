@@ -6,7 +6,7 @@ pipeline {
         }
         stage('Convert') {
             steps {
-                // convert sass files
+                sh './build/convert.sh'
                 // package django container
                 // run tests
                 // deploy container
