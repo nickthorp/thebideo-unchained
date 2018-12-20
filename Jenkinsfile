@@ -2,7 +2,9 @@ pipeline {
     agent any
     stages {
         stage('Checkout') {
-            checkout scm
+            steps {
+                checkout scm
+            }
         }
         stage('Convert') {
             steps {
@@ -10,8 +12,10 @@ pipeline {
                 // package django container
                 // run tests
                 // deploy container
-                // 
             }
         }
+    }
+    post {
+        
     }
 }
