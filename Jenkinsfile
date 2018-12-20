@@ -8,6 +8,7 @@ pipeline {
         }
         stage('Convert') {
             steps {
+                sh 'chmod 755 build/*.sh'
                 sh 'build/convert.sh'
                 // package django container
                 // run tests
