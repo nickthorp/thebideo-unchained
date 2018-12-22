@@ -11,14 +11,10 @@ https://docs.djangoproject.com/en/2.1/ref/settings/
 """
 
 import os
-import importlib.util
-
+import yaml
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-if os.path.isfile('/etc/settings.py'):
-    spec = importlib.util.spec_from_file_location("/etc/settings.py")
-    settings = importlib.util.module_from_spec(spec)
-    spec.loader.exec_module(settings)
+
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
 
@@ -119,3 +115,13 @@ STATIC_ROOT = '/opt/thebideo-unchained/thebideo/static'
 STATIC_URL = '/static/'
 
 APPEND_SLASH = True
+
+# Load up our configuration file
+if os.environ['ENV'] == 'PRODUCTION':
+    yml_path = "/etc/thebideo/config.yml"
+    with open(yml_path, 'r') as yaml_file:
+        cfg = yaml.load(yaml_file)
+    SECRET_KEY = cfg['SECRET_KEY']
+    DEBUG = cfg['DEBUG']
+    ALLOWED_HOSTS = cfg['ALLOWED_HOSTS']
+    DATABASES = cfg['DATABASES']
