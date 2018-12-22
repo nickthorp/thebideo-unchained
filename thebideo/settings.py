@@ -11,10 +11,14 @@ https://docs.djangoproject.com/en/2.1/ref/settings/
 """
 
 import os
+import importlib.util
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-
+if os.path.isfile('/etc/settings.py'):
+    spec = importlib.util.spec_from_file_location("/etc/settings.py")
+    settings = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(settings)
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
 
@@ -73,14 +77,6 @@ WSGI_APPLICATION = 'wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'HOST': '',
-        'NAME': '',
-        'USER': '',
-        'PASSWORD': '',
-        'PORT': '',
-    },
-    'local': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     },
