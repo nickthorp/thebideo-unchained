@@ -13,4 +13,4 @@ docker rm thebideo
 docker run -d ${PORTS} ${VOLUMES} ${DOCKER_ENV} --name thebideo -it thebideo:1.$BUILD_NUMBER
 # Run the DB migrate command, also should not be run during build time
 sleep 10 # gotta give it some time to warm up
-docker exec -it thebideo python manage.py migrate
+docker exec -i thebideo python manage.py migrate
