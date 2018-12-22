@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+# $BUILD_NUMBER is an environment variable intended to be in inherited from build automation (Jenkins)
+
 # Stop and Remove and existing thebideo containers
 docker stop thebideo
 docker rm thebideo
