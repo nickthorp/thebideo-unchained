@@ -20,6 +20,11 @@ pipeline {
         }
         stage('Deploy') {
             steps {
+                try {
+                    sh 'docker stop thebideo && docker rm thebideo'
+                } catch (Exception e) {
+                    print 'Existing container not found'
+                }
                 sh 'build/thebideo-docker-run.sh'
             }
         }
