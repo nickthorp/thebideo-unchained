@@ -13,7 +13,7 @@ COPY . .
 
 WORKDIR /opt/thebideo-unchained/thebideo
 RUN python manage.py collectstatic
-
+RUN ls -al static/bideosite/
 EXPOSE 9000
 EXPOSE 9191
 CMD [ "uwsgi", "wsgi.ini" ]
