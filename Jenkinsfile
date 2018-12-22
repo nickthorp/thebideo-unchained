@@ -18,8 +18,11 @@ pipeline {
                 sh 'build/thebideo-docker.sh'
             }
         }
-        // run tests
-        // deploy container
+        stage('Deploy') {
+            steps {
+                sh 'build/thebideo-docker-run.sh'
+            }
+        }
     }
     post {
         always { 
