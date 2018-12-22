@@ -4,7 +4,10 @@ import json
 import os
 
 # Load up our configuration file
-yml_path = os.getcwd() + "/bideosite/config.yml"
+if os.environ['ENV'] == 'PRODUCTION':
+    yml_path = "/etc/thebideo/config.yml"
+else:
+    yml_path = os.getcwd() + "/bideosite/config.yml"
 with open(yml_path, 'r') as yaml_file:
     cfg = yaml.load(yaml_file)
 

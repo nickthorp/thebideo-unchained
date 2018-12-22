@@ -11,7 +11,7 @@ from .modules.contact import verify_recaptcha, mailgun
 
 # Load up our configuration file
 if os.environ['ENV'] == 'PRODUCTION':
-    yml_path = os.getcwd() + "/etc/thebideo/config.yml"
+    yml_path = "/etc/thebideo/config.yml"
 else:
     yml_path = os.getcwd() + "/bideosite/config.yml"
 with open(yml_path, 'r') as yaml_file:
