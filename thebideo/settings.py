@@ -117,11 +117,15 @@ STATIC_URL = '/static/'
 APPEND_SLASH = True
 
 # Load up our configuration file
-if os.environ['ENV'] == 'PRODUCTION':
-    yml_path = "/etc/thebideo/config.yml"
-    with open(yml_path, 'r') as yaml_file:
-        cfg = yaml.load(yaml_file)
-    SECRET_KEY = cfg['SECRET_KEY']
-    DEBUG = cfg['DEBUG']
-    ALLOWED_HOSTS = cfg['ALLOWED_HOSTS']
-    DATABASES = cfg['DATABASES']
+try:
+    if os.environ['ENV'] == 'PRODUCTION':
+        yml_path = "/etc/thebideo/config.yml"
+        with open(yml_path, 'r') as yaml_file:
+            cfg = yaml.load(yaml_file)
+        SECRET_KEY = cfg['SECRET_KEY']
+        DEBUG = cfg['DEBUG']
+        ALLOWED_HOSTS = cfg['ALLOWED_HOSTS']
+        DATABASES = cfg['DATABASES']
+except KeyError:
+    print("Environment Variable doesn't exist")
+    pass
