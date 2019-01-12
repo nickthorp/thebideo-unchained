@@ -31,12 +31,10 @@ def index(request):
 
 
 def podcast(request):
-    podcast_list = Podcast.objects.order_by('-pub_date')
-    output = "<br>".join([p.episode_title for p in podcast_list])
     context = {
-
+        "podcast": Podcast.objects.order_by('-pub_date'),
     }
-    return HttpResponse(output)
+    return render(request, 'bideosite/podcast.html', context)
 
 
 def contact(request):
@@ -50,7 +48,8 @@ def contact(request):
                             form.cleaned_data["subject"], form.cleaned_data["message"])
                 if r == "failed":
                     message = "There was a problem."
-                message = "Success"
+                else:
+                    message = "Success"
             else:
                 message = "Robot"
     form = ContactForm()
