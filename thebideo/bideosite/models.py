@@ -4,7 +4,7 @@ from django.db import models
 # Create your models here.
 class Podcast(models.Model):
     episode_title = models.CharField(max_length=255)
-    episode_number = models.IntegerField()
+    episode_number = models.FloatField()
     file_url = models.URLField()
     img_url = models.URLField()
     pub_date = models.DateTimeField('date published')

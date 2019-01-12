@@ -25,7 +25,7 @@ def insert_initial_data(apps, schema_editor):
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('bideosite', '0004_auto_20181215_2050'),
+        ('bideosite', '0005_auto_20190112_1428'),
     ]
 
     operations = [
