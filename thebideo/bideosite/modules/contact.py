@@ -4,12 +4,16 @@ import json
 import os
 
 # Load up our configuration file
-if os.environ['ENV'] == 'PRODUCTION':
-    yml_path = "/etc/thebideo/config.yml"
-else:
-    yml_path = os.getcwd() + "/bideosite/config.yml"
-with open(yml_path, 'r') as yaml_file:
-    cfg = yaml.load(yaml_file)
+try:
+    if os.environ['ENV'] == 'PRODUCTION':
+        yml_path = "/etc/thebideo/config.yml"
+    else:
+        yml_path = os.getcwd() + "/bideosite/config.yml"
+    with open(yml_path, 'r') as yaml_file:
+        cfg = yaml.load(yaml_file)
+except KeyError:
+    print("Environment Variable doesn't exist. Using defaults")
+    pass
 
 
 def verify_recaptcha(recaptcha_response):

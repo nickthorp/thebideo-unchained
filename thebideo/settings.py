@@ -127,5 +127,5 @@ try:
         ALLOWED_HOSTS = cfg['ALLOWED_HOSTS']
         DATABASES = cfg['DATABASES']
 except KeyError:
-    print("Environment Variable doesn't exist")
+    print("Environment Variable doesn't exist. Using defaults")
     pass
