@@ -26,7 +26,7 @@ pipeline {
     }
     post {
         always { 
-            slackNotifier(currentBuild.currentResult)
+            slackNotifier.call(currentBuild.currentResult)
             cleanWs()
         }
     }
