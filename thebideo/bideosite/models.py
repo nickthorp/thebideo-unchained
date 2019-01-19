@@ -18,6 +18,7 @@ class Youtube(models.Model):
     video_title = models.CharField(max_length=255)
     video_url = models.URLField()
     video_description = models.TextField()
+    pub_date = models.DateTimeField('date published', default='2005-02-14 12:00:00')
 
     def __str__(self):
         return self.video_title

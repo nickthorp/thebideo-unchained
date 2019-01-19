@@ -4,12 +4,11 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Contact Us - The Bideo</title>
+    <title>Reviews! - The Bideo</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" href="{% static 'bideosite/contact.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'bideosite/main.css' %}" />
     <link rel="shortcut icon" href="{% static 'bideosite/favicon.ico' %}">
     <script src="{% static 'bideosite/main.js' %}"></script>
-    <script src='https://www.google.com/recaptcha/api.js'></script>
 </head>
 
 <header class="row">
@@ -21,24 +20,31 @@
             <img src="{% static 'bideosite/hamburger-1.png' %}" alt="Menu" />
         </a>
         <a href="../podcast"><p>Podcast</p></a>
-        <a href="../reviews"><p>Reviews</p></a>
+        <a href=""><p>Reviews</p></a>
         <a href="#library"><p>Library</p></a>
         <a href="../contact"><p>Contact Us!</p></a>
     </div>
 </header>
-<body>
-    <div class="form-container col-sm-12 col-lg-12">
-        <h1>Leave us a comment!</h1>
-        <form action="/contact/" method="POST" target="_self">
-            {% csrf_token %}
-            <table>
-                {{ form }}
-            </table>
-            <div class="g-recaptcha" data-sitekey="6LfT63QUAAAAAGjZh7yGdoU4jIeccClWjxkCTXvq"></div>
-            <input id="submit" type="submit" value="Submit">
-        </form>
+{% for tube in youtubes %}
+<div class="jumbotron row">
+    <div class="col-xs-12 col-sm-6 col-md-6">
+        <h3>{{ tube.video_title }}</h3>
+            <div class="video-container">
+                <iframe id="youtube" src="{{ tube.video_url }}" width="560" height="315"
+                    frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+            </div>
     </div>
-    <h2>{{ message }}</h2>
-</body>
+    <div class="col-xs-12 col-sm-6 col-md-6">
+        <div class="jumbotron-info">
+            <h4>{{ tube.pub_date }}</h4>
+            <h1>{{ tube.video_title }}</h1>
+            <p>{{ tube.episode_description }}</p>
+        </div>
+    </div>
+</div>
+{% endfor %}
 
+<body>
+
+</body>
 </html>

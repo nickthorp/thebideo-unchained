@@ -1,27 +1,24 @@
 @import 'globals';
 
-.form-container {
-    width: 40%;
-    border: 1px solid black;
-    margin: 2rem;
-}
+@import 'gridtemplate';
+@import 'navbar';
+@import 'jumbotron';
 
-a, h1 {
-    text-align: center;
-    color: $colorDeepPurple;
-    margin: 2rem;
+.form-container {
+    width: 100%;
+    margin: $navMaxHeight+1 0rem;
 }
 
 form {
+    border: black solid 1px;
     margin: 2rem;
-    input {
-        width: 90%;
-        height: 2rem;
-        margin: 1rem;
+    tr {
+        input {
+            width: 90%;
+            height: 2rem;
+            margin: 1rem;
+        }
     }
-}
-
-#text-box {
 }
 
 .g-recaptcha {
@@ -29,5 +26,9 @@ form {
 }
 
 #submit {
-    padding: 1rem;
+    height: 2rem;
+    margin: 1rem;
+    padding: 0px;
+    vertical-align: middle;
+    width: 5rem;
 }
