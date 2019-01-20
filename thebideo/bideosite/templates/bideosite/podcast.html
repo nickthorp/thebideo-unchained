@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Podcasts - The Bideo</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" href="{% static 'bideosite/main.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'bideosite/podcast.css' %}" />
     <link rel="shortcut icon" href="{% static 'bideosite/favicon.ico' %}">
     <script src="{% static 'bideosite/main.js' %}"></script>
 </head>
@@ -25,25 +25,26 @@
         <a href="../contact"><p>Contact Us!</p></a>
     </div>
 </header>
+<div class="jumbo-container">
 {% for pod in podcast %}
-<div class="jumbotron row">
-    <div class="col-xs-12 col-sm-4 col-md-4">
-        <img class="episode-panel" src="{{ pod.img_url }}" alt="Them Bideo Boys" />
-    </div>
-    <div class="col-xs-12 col-sm-8 col-md-8">
-        <div class="jumbotron-info">
-            <h4>{{ pod.pub_date }}</h4>
-            <h1>{{ pod.episode_title }}</h1>
-            <p>{{ pod.episode_desc }}</p>
-            <audio id="mainsound" controls>
-                <source src="{{ pod.file_url }}" type="audio/mp3">
-                Your browser does not support the <code>audio</code> element.
-            </audio>
+    <div class="jumbotron row">
+        <div class="col-xs-12 col-sm-4 col-md-4">
+            <img class="episode-panel" src="{{ pod.img_url }}" alt="Them Bideo Boys" />
+        </div>
+        <div class="col-xs-12 col-sm-8 col-md-8">
+            <div class="jumbotron-info">
+                <h4>{{ pod.pub_date }}</h4>
+                <h1>{{ pod.episode_title }}</h1>
+                <p>{{ pod.episode_desc }}</p>
+                <audio id="mainsound" controls>
+                    <source src="{{ pod.file_url }}" type="audio/mp3">
+                    Your browser does not support the <code>audio</code> element.
+                </audio>
+            </div>
         </div>
     </div>
-</div>
 {% endfor %}
-
+</div>
 <body>
 
 </body>

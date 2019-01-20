@@ -62,8 +62,3 @@ def reviews(request):
         "youtubes": Youtube.objects.order_by('-pub_date')[:1],
     }
     return render(request, 'bideosite/reviews.html', context)
-
-# def comment(request):
-#     return HttpResponse(request)
-
-
