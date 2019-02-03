@@ -62,3 +62,8 @@ def reviews(request):
         "youtubes": Youtube.objects.order_by('-pub_date')[:1],
     }
     return render(request, 'bideosite/reviews.html', context)
+
+
+def healthz(request):
+    fart = "I might be healthy."
+    return HttpResponse(fart)
