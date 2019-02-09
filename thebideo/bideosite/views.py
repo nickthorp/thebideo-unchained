@@ -65,5 +65,4 @@ def reviews(request):
 
 
 def healthz(request):
-    fart = "I might be healthy."
-    return HttpResponse(fart)
+    return HttpResponse('Buzz')
