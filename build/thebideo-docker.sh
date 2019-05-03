@@ -7,3 +7,6 @@ docker image rm nuggle/thebideo-unchained:latest
 
 # Build that container
 docker build --rm -t nuggle/thebideo-unchained:latest -t nuggle/thebideo-unchained:1.${BUILD_NUMBER} -f `pwd`/thebideo/docker/thebideo/Dockerfile .
+
+docker push nuggle/thebideo-unchained:latest
+docker push nuggle/thebideo-unchained:${BUILD_NUMBER}

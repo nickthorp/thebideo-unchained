@@ -1,6 +1,7 @@
 import json
 import os
 import yaml
+import logging
 from django.shortcuts import render
 from django.http import HttpResponse
 
@@ -20,6 +21,9 @@ try:
 except KeyError:
     print("Environment Variable doesn't exist. Using defaults")
     pass
+
+
+logger = logging.getLogger('django')
 
 
 def index(request):
@@ -65,4 +69,5 @@ def reviews(request):
 
 
 def healthz(request):
+    # logger.debug("Yooo")
     return HttpResponse('Buzz')

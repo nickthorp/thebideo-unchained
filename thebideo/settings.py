@@ -116,6 +116,26 @@ STATIC_URL = '/static/'
 
 APPEND_SLASH = True
 
+# Configure some logging
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'file': {
+            'level': 'DEBUG',
+            'class': 'logging.FileHandler',
+            'filename': os.path.join(BASE_DIR, 'thebideo-debug.log'),
+        },
+    },
+    'loggers': {
+        'django': {
+            'handlers': ['file'],
+            'level': 'DEBUG',
+            'propagate': True,
+        },
+    },
+}
+
 # Load up our configuration file
 try:
     if os.environ['ENV'] == 'PRODUCTION':
