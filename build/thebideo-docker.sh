@@ -10,4 +10,4 @@ docker build --rm -t nuggle/thebideo-unchained:latest -t nuggle/thebideo-unchain
 
 docker login
 docker push nuggle/thebideo-unchained:latest
-docker push nuggle/thebideo-unchained:${BUILD_NUMBER}
+docker push nuggle/thebideo-unchained:1.${BUILD_NUMBER}
