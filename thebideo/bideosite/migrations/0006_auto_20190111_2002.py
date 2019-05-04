@@ -7,7 +7,7 @@ from django.utils.timezone import make_aware
 
 def insert_initial_data(apps, schema_editor):
     podcast = apps.get_model('bideosite', 'Podcast')
-    with open('bideosite/migrations/bideosite_podcast002.csv') as f:
+    with open('bideosite/migrations/bideosite_podcast001.csv') as f:
         reader = csv.reader(f)
         for row in reader:
             if row[0] != 'id':
@@ -16,7 +16,7 @@ def insert_initial_data(apps, schema_editor):
                     episode_title=row[1],
                     episode_number=row[2],
                     file_url=row[3],
-                    pub_date=make_aware(datetime.strptime(row[4], '%Y-%m-%d %H:%M:%S')),
+                    pub_date=datetime.strptime(row[4], '%Y-%m-%d %H:%M:%S %z'),
                     episode_desc=row[5],
                     img_url=row[6]
                 )
