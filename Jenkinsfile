@@ -18,13 +18,15 @@ pipeline {
                 sh 'build/thebideo-docker.sh'
             }
         }
-        /*
+        
         stage('Deploy') {
             steps {
-                sh 'build/thebideo-docker-run.sh'
+                withCredentials([usernameColonPassword(credentialsId: '1a5f4c2f-9662-415c-9e26-58b6840b2d49', variable: 'CREDS')]) {
+                    httpRequest consoleLogResponseBody: true, contentType: 'APPLICATION_JSON', customHeaders: [[maskValue: false, name: 'Authorization', value: "Basic ${env.CREDS}"]], httpMode: 'POST', ignoreSslErrors: true, responseHandle: 'NONE', timeout: 30, url: 'http://192.168.0.25/api/v2/job_templates/7/launch/', validResponseCodes: '201'
+                }
             }
         }
-        */
+        
     }
     post {
         always {
