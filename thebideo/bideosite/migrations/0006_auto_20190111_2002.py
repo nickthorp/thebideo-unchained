@@ -2,7 +2,6 @@
 import csv
 from datetime import datetime
 from django.db import migrations
-from django.utils.timezone import make_aware
 
 
 def insert_initial_data(apps, schema_editor):
@@ -12,7 +11,6 @@ def insert_initial_data(apps, schema_editor):
         for row in reader:
             if row[0] != 'id':
                 _, created = podcast.objects.get_or_create(
-                    # id=row[0],
                     episode_title=row[1],
                     episode_number=row[2],
                     file_url=row[3],

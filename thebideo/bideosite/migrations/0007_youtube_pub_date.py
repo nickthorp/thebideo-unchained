@@ -2,12 +2,11 @@
 
 from django.db import migrations, models
 from datetime import datetime
-from django.utils.timezone import make_aware
 
 
 class Migration(migrations.Migration):
 
-    default_time = make_aware(datetime.strptime('2005-02-14 12:00:00', '%Y-%m-%d %H:%M:%S'))
+    default_time = datetime.strptime('2005-02-14 12:00:00 +0000', '%Y-%m-%d %H:%M:%S %z')
 
     dependencies = [
         ('bideosite', '0006_auto_20190111_2002'),

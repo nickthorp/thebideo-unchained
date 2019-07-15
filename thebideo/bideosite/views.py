@@ -8,6 +8,7 @@ from django.http import HttpResponse
 from .models import Podcast, Youtube
 from .forms import ContactForm
 from .modules.contact import verify_recaptcha, mailgun
+from .modules.feeds import parse_podbean_feed, parse_youtube_feeds
 
 
 # Load up our configuration file
@@ -29,7 +30,7 @@ logger = logging.getLogger('django')
 def index(request):
     context = {
         "podcast": Podcast.objects.order_by('-pub_date')[:1],
-        "youtubes": Youtube.objects.order_by('video_title')[:1],
+        "youtubes": Youtube.objects.order_by('-pub_date')[:1],
     }
     return render(request, 'bideosite/index.html', context)
 
@@ -63,7 +64,7 @@ def contact(request):
 
 def reviews(request):
     context = {
-        "youtubes": Youtube.objects.order_by('-pub_date')[:1],
+        "youtubes": Youtube.objects.exclude(video_title__startswith='The Bideo').order_by('-pub_date'),
     }
     return render(request, 'bideosite/reviews.html', context)
 
@@ -71,3 +72,9 @@ def reviews(request):
 def healthz(request):
     # logger.debug("Yooo")
     return HttpResponse('Buzz')
+
+
+def update_podcasts(request):
+    parse_podbean_feed()
+    parse_youtube_feeds()
+    return HttpResponse('We updated our podcasts!')

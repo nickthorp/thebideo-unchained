@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Reviews! - The Bideo</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" href="{% static 'bideosite/main.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'bideosite/podcast.css' %}" />
     <link rel="shortcut icon" href="{% static 'bideosite/favicon.ico' %}">
     <script src="{% static 'bideosite/main.js' %}"></script>
 </head>
@@ -25,24 +25,25 @@
         <a href="../contact"><p>Contact Us!</p></a>
     </div>
 </header>
+<div class="jumbo-container">
 {% for tube in youtubes %}
-<div class="jumbotron row">
-    <div class="col-xs-12 col-sm-6 col-md-6">
-        <div class="video-container">
-            <iframe id="youtube" src="{{ tube.video_url }}" width="560" height="315"
-                frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+    <div class="jumbotron row">
+        <div class="col-xs-12 col-sm-6 col-md-6">
+            <div class="video-container">
+                <iframe id="youtube" src="{{ tube.video_url }}" width="560" height="315"
+                    frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-6">
+            <div class="jumbotron-info">
+                <h4>{{ tube.pub_date }}</h4>
+                <h1>{{ tube.video_title }}</h1>
+                <p>{{ tube.video_description }}</p>
+            </div>
         </div>
     </div>
-    <div class="col-xs-12 col-sm-6 col-md-6">
-        <div class="jumbotron-info">
-            <h4>{{ tube.pub_date }}</h4>
-            <h1>{{ tube.video_title }}</h1>
-            <p>{{ tube.video_description }}</p>
-        </div>
-    </div>
-</div>
 {% endfor %}
-
+</div>
 <body>
 
 </body>
