@@ -33,3 +33,13 @@ class Youtube(models.Model):
 
     def __str__(self):
         return self.video_title
+
+
+class TwitchUser(models.Model):
+    id = models.IntegerField(primary_key=True)
+    login = models.CharField(max_length=255)
+    display_name = models.CharField(max_length=255)
+    profile_image_url = models.CharField(max_length=255)
+
+    def __str__(self):
+        return self.display_name
