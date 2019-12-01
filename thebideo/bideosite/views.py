@@ -28,15 +28,9 @@ logger = logging.getLogger('django')
 
 
 def index(request):
-    podcast = Podcast.objects.order_by('-pub_date')[:1]
-    for yt in Youtube.objects.order_by('-pub_date'):
-        if yt.video_title != podcast.episode_title:
-            youtube = yt
-            break
-        youtube = yt
     context = {
-        "podcast": podcast,
-        "youtubes": youtube,
+        "podcast": Podcast.objects.order_by('-pub_date')[:1],
+        "youtubes": Youtube.objects.exclude(video_title__icontains='The Bideo').order_by('-pub_date')[:1],
     }
     return render(request, 'bideosite/index.html', context)
 
