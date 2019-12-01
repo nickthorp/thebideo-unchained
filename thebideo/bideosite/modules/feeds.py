@@ -41,7 +41,7 @@ def parse_youtube_feeds():
         feed_contents = feedparser.parse("https://www.youtube.com/feeds/videos.xml?channel_id={id}"
                                          .format(id=channel.channel_id))
         for i in feed_contents['entries']:
-            models.Youtube.objects.create(
+            models.Youtube.objects.update_or_create(
                 video_title=i['title'],
                 video_url="https://www.youtube.com/embed/{vid_id}".format(vid_id=i['yt_videoid']),
                 video_description=i['summary'],
